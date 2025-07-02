@@ -1,3 +1,8 @@
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+
+
 :root{
     --color-primary: #2584ff;
     --color-secondary: #00D9ff;
@@ -11,6 +16,7 @@ html{
     font-size: 62.5%;
 }
 
+/*typography*/
 body{
     font-family: Inter, Arial, Helvetica, sans-serif;
     color:var(--color-body);
@@ -56,9 +62,184 @@ p{
 }
 
 
+/*links*/
+a{
+    text-decoration: none;
+}
+.link-arrow{
+    color:var(--color-accent);
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.link-arrow::after{
+    content: '-->';
+    margin-left: 5px;
+    transition: margin 0.15s;
+}
+.link-arrow:hover::after{
+    margin-left: 10px;
+}
+@media screen and (min-width: 1024px){
+    .link-arrow{
+        font: 1.5rem;
+    }
+}
+
+/*badges*/
+.badge{
+    border-radius: 20px;
+    padding: 0.5rem 2rem;
+    font-weight: bold;
+    white-space: nowrap;  /* we dont want this component to go in another line when the space gets limited*/
+    font-size: 2rem;
+}
+
+.badge--primary{
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.badge--secondary{
+    background: var(--color-secondary);
+    color:#fff;
+}
+
+.badge--small{
+    font-size: 1.6rem;
+}
+
+@media screen and (min-width: 1024px){
+    .badge{
+        font-size: 1.5rem;
+    }
+    .badge--small{
+        font-size: 1.2rem;
+    }
+}
+
+
+/*lists*/
+.list{
+    list-style:none; /* this will get rid of the default bullet point style that usually comes with lists*/
+    padding-left: 0;
+    color: var(--color-headings);
+
+}
+
+.list--inline.list__item{  /*understand the BEM convention here*/
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.list--tick {
+    list-style: none; /* Remove default bullet */
+    padding-left: 3rem;
+}
+
+.list--tick li::before {
+    content: "";
+    display: inline-block;
+    background-image: url(../images/tick.svg);
+    background-size: 1rem 1rem;  /* Resize the image */
+    background-repeat: no-repeat;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+.list--tick.list__item{
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tick-icon{
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+@media screen and (min-width: 1024px){
+    .list--tick.list__item{
+        padding-left: 0;
+    }
+}
 
 
 
+/*buttons*/
+.btn{
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2rem 3rem;
+    border:0;
+    border-radius: 40px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align:center;
+    margin: 1rem 0;
+}
+
+.btn--primary{
+    background: var(--color-primary);
+    color: #fff;
+}
+.btn--primary:hover{
+    background: lighten(primary,10%);  /*lighten() function comes from Sass library*/
+}
+
+.btn--secondary{
+    background: var(--color-secondary);
+    color: #fff;
+}
+
+.btn--accent{
+    background: var(--color-accent);
+    color: #fff;
+}
+
+.btn--block{
+    width: 100%;
+    display: inline-block;
+}
+
+.btn--outline{
+    background:#fff;
+    color: var(--color-headings);
+    border: 2px solid var(--color-headings);
+}
+.btn--outline:hover{
+    background: var(--color-headings);
+    color: #fff;
+}
+
+@media screen and (min-width: 1024px){
+
+    .btn{
+        font-size: 1.5rem;
+    }
+
+}
 
 
+/*inputs*/
+.input{
+    padding: 1.5rem 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    outline:0;
+    color: var(--color-headings);
+    font-size: 2rem;
+}
 
+::placeholder{
+    color: #cdcbd7;      /*This is a special psuedo class for placeholders. It applies to all placeholders*/
+}
+
+@media screen and (min-width: 1024px){
+    .input{
+        font-size: 1.5rem;
+
+    }
+}
